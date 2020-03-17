@@ -1,0 +1,41 @@
+version: '3.1'
+
+
+volumes:
+  mysql-volume:
+  ghost-volume:
+
+
+services:
+
+  ghost:
+    build: ./ghost
+    image: danibish/ghost:1.20.0
+    container_name: ghost
+    restart: always
+    volumes:
+      - ghost-volume:/var/lib/ghost
+    ports:
+      - 80:2368
+    environment:
+      database__client: mysql
+      database__connection__host: mysql 
+      database__connection__user: root 
+      database__connection__password: what3v3RR
+      database__connection__database: ghost
+    depends_on:
+      - mysql
+        #entrypoint: ["wait-for-it.sh", "mysql", "--", "docker-entrypoint.sh"]
+        # command: ["node", "current/index.js"]
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: always
+    volumes:
+      - mysql-volume:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: what3v3RR
+      MYSQL_DATABASE: ghost
+      MYSQL_USER: ghost
+      MYSQL_PASSWORD: wat3v3RRgh0zt
