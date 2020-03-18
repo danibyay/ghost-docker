@@ -1,3 +1,8 @@
 # Ghost with docker
 
-enter to 165.227.192.39:80
+currently hosted at daniblog.galileomtz.com
+
+## Features
+
+-- SSL certificate for a secure connection
+-- microservices architecture using Docker
