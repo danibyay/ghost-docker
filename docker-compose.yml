@@ -9,7 +9,6 @@ volumes:
 services:
 
   ghost:
-    build: ./ghost
     image: danibish/ghost:1.20.0
     container_name: ghost
     restart: always
@@ -25,8 +24,6 @@ services:
       database__connection__database: ghost
     depends_on:
       - mysql
-        #entrypoint: ["wait-for-it.sh", "mysql", "--", "docker-entrypoint.sh"]
-        # command: ["node", "current/index.js"]
 
   mysql:
     image: mysql:5.7
