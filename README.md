@@ -4,5 +4,5 @@ currently hosted at daniblog.galileomtz.com
 
 ## Features
 
--- SSL certificate for a secure connection
--- microservices architecture using Docker
+- SSL certificate for a secure connection
+- microservices architecture using Docker
