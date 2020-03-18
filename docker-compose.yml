@@ -8,6 +8,21 @@ volumes:
 
 services:
 
+  nginx:
+    image: nginx
+    volumes:
+      - $PWD/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - $PWD/nginx/blog.conf:/etc/nginx/sites-enabled/blog.conf
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /etc/ssl:/etc/ssl
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - ghost
+    restart: always
+
+
   ghost:
     image: danibish/ghost:1.20.0
     container_name: ghost
@@ -15,13 +30,14 @@ services:
     volumes:
       - ghost-volume:/var/lib/ghost
     ports:
-      - 80:2368
+      - 2368:2368
     environment:
       database__client: mysql
       database__connection__host: mysql 
       database__connection__user: root 
       database__connection__password: what3v3RR
       database__connection__database: ghost
+      url: https://daniblog.galileomtz.com
     depends_on:
       - mysql
 
