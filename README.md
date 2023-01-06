@@ -63,6 +63,9 @@ currently setup points to daniblog.galileomtz.com, but the machine no longer exi
 This takes more than 5 minutes
 > openssl dhparam -out /etc/ssl/private/dhparams_4096.pem 4096 
 
+If it takes too long in a low CPU machine, instead use:
+> openssl dhparam -dsaparam -out /etc/ssl/private/dhparam.pem 4096
+
 4. Generate certificates
 
         sudo apt install certbot python3-certbot-nginx
